@@ -10,11 +10,20 @@ services:
       - '5432:5432'
     volumes: 
       - db:/var/lib/postgresql/data
+    networks:
+      - savings-account-app-network
   savings-account-app:
+    depends_on:
+      - db
     image: savings-account-app:1.0.0
     ports:
       - '8081:8081'
+    networks:
+      - savings-account-app-network
 
 volumes:
   db:
     driver: local
+networks:
+  savings-account-app-network:
+    driver: bridge
