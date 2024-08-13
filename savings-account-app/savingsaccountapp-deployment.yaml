@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: savingsaccountapp-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: savingsaccountapp
+  template:
+    metadata:
+      labels:
+        app: savingsaccountapp
+    spec:
+      containers:
+      - name: savingsaccountapp
+        image: <registry>/savingsaccountapp:latest
+        ports:
+        - containerPort: 8081
