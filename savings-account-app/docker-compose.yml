@@ -10,6 +10,11 @@ services:
       - '5432:5432'
     volumes: 
       - db:/var/lib/postgresql/data
+  savings-account-app:
+    image: savings-account-app:1.0.0
+    ports:
+      - '8081:8081'
+
 volumes:
   db:
     driver: local
