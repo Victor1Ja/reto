@@ -8,7 +8,25 @@ This guide will help you deploy three services (`nginx`, `RestAppClima`, and `Sa
 - `kubectl` installed and configured to interact with your cluster
 - Docker images for `nginx`, `RestAppClima`, and `SavingsAccountApp` pushed to a container registry
 
-## Steps
+## Steps on Docker side
+Build and publish the Docker images for `nginx`, `RestAppClima`, and `SavingsAccountApp` to a container registry.
+example:
+```bash
+cd RestAppClima
+# Step 1: Build the Docker image
+docker build -t savings-account-app:1.0.0 .
+
+# Step 2: Login to Azure Container Registry
+docker login myregistry.azurecr.io
+
+# Step 3: Tag the Docker image
+docker tag savings-account-app:1.0.0 myregistry.azurecr.io/savings-account-app:1.0.0
+
+# Step 4: Push the Docker image to Azure Container Registry
+docker push myregistry.azurecr.io/savings-account-app:1.0.0
+```
+
+## Steps on Kubernetes side
 
 ### 1. Create Kubernetes Manifests
 

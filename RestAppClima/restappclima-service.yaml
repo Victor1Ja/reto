@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: restappclima-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: restappclima
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
