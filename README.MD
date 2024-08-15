@@ -29,7 +29,11 @@ docker push myregistry.azurecr.io/savings-account-app:1.0.0
 ## Steps on Kubernetes side
 
 ### 1. Install kubeclt
-Kubectl is a command-line tool that allows you to run commands against Kubernetes clusters. You can install it using the following command:
+Kubectl is a command-line tool that allows you to run commands against Kubernetes clusters. You can install it using the following command in windows:
+```bash
+winget install kubernetes-cli
+````
+
 
 [Docs Here](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/)
 
