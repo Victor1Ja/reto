@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: savingsaccountapp-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: savingsaccountapp
+  template:
+    metadata:
+      labels:
+        app: savingsaccountapp
+    spec:
+      containers:
+      - name: savingsaccountapp
+        image: registry.digitalocean.com/test-conainer/savings-account-app:1.0.0
+        ports:
+        - containerPort: 8081
+        env:
+        - name: DB_HOST
+          value: "postgres"
+        - name: DB_PORT
+          value: "5432"
+        - name: DB_NAME
+          value: "postgres"
+        - name: DB_USER
+          value: "postgres"
+        - name: DB_PASSWORD
+          value: "postgres"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: savingsaccountapp-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: savingsaccountapp
+  ports:
+    - protocol: TCP
+      port: 8081
+      targetPort: 8081
