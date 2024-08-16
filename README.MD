@@ -31,7 +31,7 @@ docker push myregistry.azurecr.io/savings-account-app:1.0.0
 ### 1. Install kubeclt
 Kubectl is a command-line tool that allows you to run commands against Kubernetes clusters. You can install it using the following command in windows:
 ```bash
-winget install kubernetes-cli
+winget install -e --id Kubernetes.kubectl
 ````
 
 
